@@ -60,7 +60,7 @@ int is_valid(Node* n)
   for(int i = 0; i < 9; i++)
   {
     int arrF[10] = {0}; //inicializar arreglo con ceros
-    for(int j = 0; j < 0; j++)
+    for(int j = 0; j < 9; j++)
     {
       int num = n->sudo[i][j];
       if (num != 0)
@@ -79,7 +79,7 @@ int is_valid(Node* n)
   for(int i = 0; i < 9; i++)
   {
     int arrC[10] = {0}; //inicializar arreglo con ceros
-    for(int j = 0; j < 0; j++)
+    for(int j = 0; j < 9; j++)
     {
       int num = n->sudo[i][j];
       if (num != 0)
