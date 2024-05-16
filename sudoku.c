@@ -135,11 +135,13 @@ for(p=0;p<9;p++){
 }
 
 /*
-.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes. Obtenga los nodos adyacentes a n y agréguelos a la lista
+1.Cree una función que a partir de un nodo genere una lista con los nodos adyacentes. Obtenga los nodos adyacentes a n y agréguelos a la lista
 Recuerde que los nodos adyacentes son generados aplicando las acciones al estado actual.
 Para el caso del ejemplo, la función debería retornar una lista con 9 nodos. 
 Cada uno de ellos idéntico al nodo original pero cambiando el valor de la primera casilla vacía, es decir: sudo[0][2], por 1, 2, ..., 9.
 Utilice la función Node* copy(Node* n) para copiar nodos.
+
+3.Modifique la función get_adj_nodes para que sólo los nodos válidos sean retornados (use la función is_valid).
 */
 List* get_adj_nodes(Node* n)
 {
