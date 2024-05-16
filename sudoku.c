@@ -43,9 +43,88 @@ void print_node(Node* n){
     printf("\n");
 }
 
-int is_valid(Node* n){
+/*
+Cree la función int is_valid(Node * n), para validar si un estado/nodo es válido (cumple con las restricciones del problema). Debe validar que:
 
-    return 1;
+No se repitan números en las filas
+No se repitan números en las columnas
+No se repitan números en las submatrices de 3x3
+
+Si el estado es válido la función retorna 1, si no lo es retorna 0.
+
+Para marcar los números que vayan apareciendo en una fila/columna/submatriz puede usar un arreglo de enteros de largo 10 inicializado con 0s. Cada vez que aparezca un número i, verifique que la casilla i del arreglo sea igual a 0, luego márquela con un '1'. Si la casilla es '1' quiere decir que el número ya estaba marcado por lo que la fla/columna/submatriz no es válida.
+*/
+int is_valid(Node* n)
+{
+  //verificar filas primero
+  for(int i = 0; i < 9; i++)
+  {
+    int arrF[10] = {0}; //inicializar arreglo con ceros
+    for(int j = 0; j < 0; j++)
+    {
+      int num = n->sudo[i][j];
+      if (num != 0)
+      {
+        if(arrF[num] == 0)
+        {
+          arrF[num] = 1;
+        }
+        else{
+          return 0;
+        }
+      }
+    }
+  }
+  //verificar columnas 
+  for(int i = 0; i < 9; i++)
+  {
+    int arrC[10] = {0}; //inicializar arreglo con ceros
+    for(int j = 0; j < 0; j++)
+    {
+      int num = n->sudo[i][j];
+      if (num != 0)
+      {
+        if(arrC[num] == 0)
+        {
+          arrC[num] = 1;
+        }
+        else{
+          return 0;
+        }
+      }
+    }
+  }
+
+  //Verificar sub-matrices de 3x3
+  for(int k = 0; k < 9; k++)
+  {
+    int arrSub[10] = {0};
+    for(int l = 0; l < 9; l++)
+    {
+      /*
+      En un Sudoku, el tablero de 9x9 se divide en nueve submatrices de 3x3.
+      Cada submatriz tiene índices diferentes en la matriz principal de 9x9.
+      
+      En base a la siguiente formula se puede Iterar a través de cada celda dentro de la submatriz de 3x3 correspondiente
+      */
+      int i = 3 *(k/3) + (l/3);
+      int j = 3 *(k%3) + (l%3);
+      
+      int num = n->sudo[i][j];
+      if (num != 0)
+      {
+        if(arrSub[num] == 0)
+        {
+          arrSub[num] = 1;
+        }
+        else{
+          return 0;
+        }
+      }
+    }
+  }
+  //Si no se encuentran duplicados el nodo es valido.
+  return 1;
 }
 
 /*
