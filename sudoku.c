@@ -106,6 +106,13 @@ int is_valid(Node* n)
       Cada submatriz tiene índices diferentes en la matriz principal de 9x9.
       
       En base a la siguiente formula se puede Iterar a través de cada celda dentro de la submatriz de 3x3 correspondiente
+      ej: int k=4,p; 
+for(p=0;p<9;p++){
+    int i=3*(k/3) + (p/3) ;
+    int j=3*(k%3) + (p%3) ;
+    printf("%d ",nodo->sudo[i][j]);
+    if(p%3 == 2) printf("\n");
+}
       */
       int i = 3 *(k/3) + (l/3);
       int j = 3 *(k%3) + (l%3);
@@ -137,6 +144,7 @@ Utilice la función Node* copy(Node* n) para copiar nodos.
 List* get_adj_nodes(Node* n)
 {
   List* list = createList();
+  
   for(int i = 0; i < 9; i++)
   {
     for(int j = 0; j < 9; j++)
@@ -144,11 +152,16 @@ List* get_adj_nodes(Node* n)
       if (n->sudo[i][j] == 0)
       {
         for(int num = 1; num <= 9; num++)
-          {
-            Node* newNode = copy(n);
-            newNode->sudo[i][j] = num;
+        {
+          Node* newNode = copy(n);
+          newNode->sudo[i][j] = num;
+          if(is_valid(newNode)){
             pushBack(list, newNode);
           }
+          else{
+            free(newNode);
+          }
+        }
         return list;
       }
     }
