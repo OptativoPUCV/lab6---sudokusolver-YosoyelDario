@@ -228,22 +228,20 @@ Node* DFS(Node* initial, int* cont)
     {
       while(!is_empty(pila))
       {
-        Node * liberar = top(pila);
         pop(pila);
-        free(liberar);
       }
       return aux;
     }
 
     List* nodosAdyacentes = get_adj_nodes(aux);
-
     Node* nodoAdy = first(nodosAdyacentes);
     while(nodoAdy != NULL){
       push(pila, nodoAdy);
       nodoAdy = next(nodosAdyacentes);
     }
-    free(aux);
+    free(aux); 
   }
+  
   return NULL;
 }
 
