@@ -217,7 +217,7 @@ Node* DFS(Node* initial, int* cont)
   push(pila, initial); // insertar el nodo inicial en la pila
   *cont = 0; // contador de iteraciones
 
-  while(is_empty(pila) == 0)
+  while(!is_empty(pila))
   {
     Node* aux = top(pila); //se obtiene el primero nodo de la pila
     pop(pila);// se elimina el nodo
@@ -226,12 +226,6 @@ Node* DFS(Node* initial, int* cont)
     // verificar si el nodo actual es estado final
     if(is_final(aux))
     {
-      while(!is_empty(pila))
-      {
-        Node* liberar = top(pila);
-        pop(pila);
-        free(liberar);
-      }
       return aux;
     }
 
@@ -241,8 +235,8 @@ Node* DFS(Node* initial, int* cont)
       push(pila, nodoAdy);
       nodoAdy = next(nodosAdyacentes);
     }
-    free(aux);
     clean(nodosAdyacentes);
+    free(aux);
   }
   
   return NULL;
