@@ -166,9 +166,8 @@ List* get_adj_nodes(Node* n)
             free(newNode);
           }
         }
-        //return list;
+        return list;
       }
-      return list;
     }
   } 
   return list;
@@ -227,6 +226,9 @@ Node* DFS(Node* initial, int* cont)
     // verificar si el nodo actual es estado final
     if(is_final(aux))
     {
+      while(is_empty(pila) == 0){
+        pop(pila);
+      }
       return aux;
     }
 
