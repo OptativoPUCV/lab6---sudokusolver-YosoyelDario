@@ -237,7 +237,7 @@ Node* DFS(Node* initial, int* cont)
       nodoAdy = next(nodosAdyacentes);
     }
     clean(nodosAdyacentes);
-    free(aux);
+    //free(aux);
   }
   return NULL;
 }
