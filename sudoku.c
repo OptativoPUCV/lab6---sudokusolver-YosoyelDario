@@ -235,6 +235,10 @@ Node* DFS(Node* initial, int* cont)
     free(aux);
     (*cont)++;
   }
+  while(!is_empty(pila))
+    {
+      pop(pila);
+    }
   return NULL;
 }
 
