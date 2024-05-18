@@ -226,8 +226,11 @@ Node* DFS(Node* initial, int* cont)
     // verificar si el nodo actual es estado final
     if(is_final(aux))
     {
-      while(is_empty(pila) == 0){
+      while(!is_empty(pila))
+      {
+        Node * liberar = top(pila);
         pop(pila);
+        free(liberar);
       }
       return aux;
     }
