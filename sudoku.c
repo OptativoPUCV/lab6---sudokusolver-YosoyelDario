@@ -171,9 +171,21 @@ List* get_adj_nodes(Node* n)
   return list;
 }
 
+/*
+Implemente la función int is_final(Node * n). Esta función retorna 1 si el nodo corresponde a un nodo final (es decir, todos los valores de la matriz son distintos a 0) y 0 en caso contrario.
 
-int is_final(Node* n){
-    return 0;
+*/
+int is_final(Node* n)
+{
+  for(int i = 0; i < 9; i++){
+    for(int j = 0; j < 9; j++){
+      if(n->sudo[i][j] == 0)
+      {
+        return 0; // existe al menos una celda vacia, el nodo no es final
+      }
+    }
+  }
+  return 1; //Si todas las celdas estan llenas, es un nodo final
 }
 
 Node* DFS(Node* initial, int* cont){
