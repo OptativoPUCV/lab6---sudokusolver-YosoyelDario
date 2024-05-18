@@ -211,14 +211,15 @@ Almacene en la variable cont, la cantidad de iteraciones que realiza el algoritm
 Node* DFS(Node* initial, int* cont)
 {
   Stack* pila = createStack(); //Crear pila
+  if(pila == NULL) return NULL;
   push(pila, initial); // insertar el nodo inicial en la pila
-  //*cont = 0; // contador de iteraciones
+  *cont = 0; // contador de iteraciones
 
   while(is_empty(pila) == 0)
   {
     Node* aux = top(pila); //se obtiene el primero nodo de la pila
     pop(pila);// se elimina el nodo
-
+    
     // verificar si el nodo actual es estado final
     if(is_final(aux))
     {
@@ -231,11 +232,16 @@ Node* DFS(Node* initial, int* cont)
     {
       push(pila, nodoAdy);
       nodoAdy = next(nodosAdyacentes);
+      (*cont)++;
     }
     //clean(nodosAdyacentes); 
     free(aux);
     (*cont)++;
   }
+  if(*cont == 0){
+    return NULL;
+  }
+  free(initial);
   return NULL;
 }
 
