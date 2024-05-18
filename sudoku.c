@@ -231,9 +231,9 @@ Node* DFS(Node* initial, int* cont)
       push(pila, nodoAdy);
       nodoAdy = next(nodosAdyacentes);
     }
-    //clean(nodosAdyacentes);
-    (*cont)++; 
+    //clean(nodosAdyacentes); 
     free(aux);
+    (*cont)++;
   }
   return NULL;
 }
