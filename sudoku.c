@@ -162,6 +162,7 @@ List* get_adj_nodes(Node* n)
             pushBack(list, newNode);
           } 
         }
+        n->sudo[i][j] = 0;
         return list;
       }
     }
@@ -235,10 +236,6 @@ Node* DFS(Node* initial, int* cont)
     free(aux);
     (*cont)++;
   }
-  while(!is_empty(pila))
-    {
-      pop(pila);
-    }
   return NULL;
 }
 
