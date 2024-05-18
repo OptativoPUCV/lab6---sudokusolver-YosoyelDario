@@ -188,7 +188,55 @@ int is_final(Node* n)
   return 1; //Si todas las celdas estan llenas, es un nodo final
 }
 
-Node* DFS(Node* initial, int* cont){
+/*
+Implemente la función Node* DFS(Node* n, int* cont). Esta función realiza una búsqueda en profundidad a partir del nodo n. El algoritmo es el siguiente:
+
+Cree un stack S (pila) e inserte el nodo.
+
+Mientras el stack S no se encuentre vacío:
+
+a) Saque y elimine el primer nodo de S.
+
+b) Verifique si corresponde a un estado final, si es así retorne el nodo.
+
+c) Obtenga la lista de nodos adyacentes al nodo.
+
+d) Agregue los nodos de la lista (uno por uno) al stack S.
+
+e) Libere la memoria usada por el nodo.
+
+Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
+
+Almacene en la variable cont, la cantidad de iteraciones que realiza el algoritmo.
+*/
+Node* DFS(Node* initial, int* cont)
+{
+  Stack* pila = createStack(); //Crear pila
+  push(pila, initial); // insertar el nodo inicial en la pila
+  *cont = 0; // contador de iteraciones
+
+  while(is_empty(pila) == 0)
+  {
+    Node* aux = top(pila); //se obtiene el primero nodo de la pila
+    pop(pila);// se elimina el nodo
+    (*cont)++; 
+
+    // verificar si el nodo actual es estado final
+    if(is_final(aux))
+    {
+      return aux;
+    }
+
+    List* nodosAdyacentes = get_adj_nodes(aux);
+
+    Node* nodoAdy = first(nodosAdyacentes);
+    while(nodoAdy != NULL){
+      push(pila, nodoAdy);
+      nodoAdy = next(nodosAdyacentes);
+    }
+
+  }
+  
   return NULL;
 }
 
