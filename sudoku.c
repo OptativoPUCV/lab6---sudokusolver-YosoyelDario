@@ -228,7 +228,9 @@ Node* DFS(Node* initial, int* cont)
     {
       while(!is_empty(pila))
       {
+        Node* liberar = top(pila);
         pop(pila);
+        free(liberar);
       }
       return aux;
     }
